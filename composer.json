@@ -1,0 +1,26 @@
+{
+    "name": "publib/FinancialUtils",
+    "type": "library",
+    "description": "Public library FinancialUtils - some stuff to compute ie. APR Annual Percentage Rate",
+    "keywords": ["financial", "apr"],
+    "license": "MIT",
+    "version" : "1.0.0-alpha",
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {"": "lib/"}
+    },
+    "config": {
+        "vendor-dir": "vendor/",
+        "bin-dir": "bin"
+    },
+    "minimum-stability" : "dev",
+    "authors": [
+        {
+            "name": "Tomasz Ziółkowski",
+            "email": "tomasz.ziolkowski@g.pl",
+            "role": "Developer"
+        }
+    ]
+}

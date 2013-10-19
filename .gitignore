@@ -1,7 +1,10 @@
 vendor/
+bin/
 .idea/
 .DS_Store
 ._*
 composer.phar
 composer.lock
+index.html
+action.php
 

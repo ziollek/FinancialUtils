@@ -1,0 +1,25 @@
+<phpunit backupGlobals="true"
+         backupStaticAttributes="false"
+         cacheTokens="true"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         forceCoversAnnotation="false"
+         processIsolation="false"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         strict="false"
+         verbose="false"
+         testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader"
+         bootstrap="./tests/bootstrap.php">
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>./tests/Financial</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>
