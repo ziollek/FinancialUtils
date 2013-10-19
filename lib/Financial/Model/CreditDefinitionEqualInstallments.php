@@ -59,12 +59,14 @@ class CreditDefinitionEqualInstallments extends AbsCreditDefinition {
      */
     public function getCashFlow()
     {
-        $result = array(new CashFlowEntity(CashFlowEntity::TYPE_PAYOUT, $this->getBorrowedAmount(), 0));
-        $result[] = new CashFlowEntity(CashFlowEntity::TYPE_PAYMENT, $this->getNoInstallmentsCost(), 0);
+        $result = array(new CashFlowEntity(CashFlowEntity::TYPE_REVENUE, $this->getBorrowedAmount(), 0));
+        if ($this->getNoInstallmentsCost() > 0) {
+            $result[] = new CashFlowEntity(CashFlowEntity::TYPE_INVESTMENT, $this->getNoInstallmentsCost(), 0);
+        }
         $daysOffset = $this->calendar->getDaysByFrequency($this->getInstallmentsFrequency());
         for($i = 1; $i <= $this->getInstallmentsCount(); $i++) {
             $result[] = new CashFlowEntity(
-                CashFlowEntity::TYPE_PAYMENT,
+                CashFlowEntity::TYPE_INVESTMENT,
                 $this->getInstallmentValue(),
                 $this->getDelay() + $i * $daysOffset
             );

@@ -6,8 +6,8 @@ namespace Financial\Model;
 
 class CashFlowEntity
 {
-    const TYPE_PAYMENT = 1;
-    const TYPE_PAYOUT  = 2;
+    const TYPE_INVESTMENT = 1;
+    const TYPE_REVENUE  = 2;
 
     /**
      * @var float

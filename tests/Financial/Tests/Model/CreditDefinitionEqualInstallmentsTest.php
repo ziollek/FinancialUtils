@@ -55,10 +55,10 @@ class CreditDefinitionEqualInstallmentsTest extends \PHPUnit_Framework_TestCase
         $creditDefinitionEqualInstallments->setInstallmentsFrequency(Calendar::FREQUENCY_WEEK);
 
         $expectedCashFlow = array(
-            new CashFlowEntity(CashFlowEntity::TYPE_PAYOUT, 1000, 0),
-            new CashFlowEntity(CashFlowEntity::TYPE_PAYMENT, 15, 0),
-            new CashFlowEntity(CashFlowEntity::TYPE_PAYMENT, 550, 27),
-            new CashFlowEntity(CashFlowEntity::TYPE_PAYMENT, 550, 34),
+            new CashFlowEntity(CashFlowEntity::TYPE_REVENUE, 1000, 0),
+            new CashFlowEntity(CashFlowEntity::TYPE_INVESTMENT, 15, 0),
+            new CashFlowEntity(CashFlowEntity::TYPE_INVESTMENT, 550, 27),
+            new CashFlowEntity(CashFlowEntity::TYPE_INVESTMENT, 550, 34),
         );
 
 

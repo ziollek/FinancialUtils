@@ -3,12 +3,12 @@
 namespace Financial\Calculator;
 
 use Financial\Math\NewtonRaphsonMethod;
-use Financial\Model\Investment;
 use Financial\Model\CashFlowEntity;
+use Financial\Model\Investment;
 use Financial\Util\Calendar;
 use Financial\Util\FunctionCall;
 
-class APR implements Calculator
+class IRR implements Calculator
 {
     /**
      * @var NewtonRaphsonMethod
@@ -23,13 +23,26 @@ class APR implements Calculator
         $this->newtonRaphsonMethod = $newtonRaphsonMethod;
     }
 
-
     /**
      * @param Investment $investment
      *
      * @return float
      */
-    public function calculate(Investment $investment) {
+    public function calculate(Investment $investment)
+    {
+        $lastPeriod = false;
+        $old = false;
+        foreach ($investment->getCashFlow() as $payment) {
+            if ($old !== false) {
+                if ($lastPeriod!== false && $lastPeriod != ($payment->getDayOffset() - $old)) {
+                    throw new \RuntimeException(
+                        'Cash flow periods are not equals - irr cannot be properly computed ('.$lastPeriod.')'
+                    );
+                }
+                $lastPeriod = $payment->getDayOffset() - $old;
+            }
+            $old = $payment->getDayOffset();
+        }
         return Calculator::PERCENT_MULTIPLIER * $this->newtonRaphsonMethod->calculate(
             $this->prepareFx($investment), $this->prepareDx($investment), 0
         );
@@ -44,8 +57,10 @@ class APR implements Calculator
     {
         return new FunctionCall(function ($i) use ($investment) {
             $result = 0;
+            $periodCount = 0;
             foreach ($investment->getCashFlow() as $payment) {
-                $exponential = -$payment->getDayOffset() / Calendar::DAY_OF_YEAR;
+                $exponential = -$periodCount;
+                $periodCount++;
 
                 if ($payment->getType() == CashFlowEntity::TYPE_REVENUE) {
                     $result -= $payment->getValue() * pow(1 + $i, $exponential);
@@ -66,8 +81,10 @@ class APR implements Calculator
     {
         return new FunctionCall(function ($i) use ($investment) {
             $result = 0;
+            $periodCount = 0;
             foreach ($investment->getCashFlow() as $payment) {
-                $exponential = -$payment->getDayOffset() / Calendar::DAY_OF_YEAR;
+                $exponential = -$periodCount;
+                $periodCount++;
                 if ($payment->getType() == CashFlowEntity::TYPE_REVENUE) {
                     $result -= $exponential * $payment->getValue() * pow(1 + $i, $exponential - 1);
                 } else {
@@ -77,4 +94,6 @@ class APR implements Calculator
             return $result;
         });
     }
+
+
 }

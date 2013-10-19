@@ -1,6 +1,6 @@
 # FinancialUtils
 
-FinancialUtils - some financial calculators i.e. APR (Annual Percentage Rate)
+FinancialUtils - some financial calculators i.e. APR (Annual Percentage Rate), IRR (Internal Rate of Return)
 
 ## Computation example
 
@@ -54,6 +54,6 @@ http://webapi-solutions.pl:8080/rrso/
 
 2. Install composer: php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
 3. Install dependencies: ./composer.phar install
-4. Lib will be installed to vendor/publib/FinancialUtils/, your sources should be inside src/ and using naming convention PSR-0
+4. Lib will be installed to vendor/publib/FinancialUtils/, your sources should be inside src/ and you should use PSR-0 naming class convention
 
 

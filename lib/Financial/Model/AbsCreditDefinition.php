@@ -4,7 +4,7 @@ namespace Financial\Model;
 
 use Financial\Util\Calendar;
 
-abstract class AbsCreditDefinition {
+abstract class AbsCreditDefinition implements Investment{
     protected $commission = 0;
     protected $percentageRate = 0;
     protected $borrowedAmount = 0;
@@ -167,10 +167,5 @@ abstract class AbsCreditDefinition {
      * @return float
      */
     abstract function getInstallmentValueByNo($installmentNo);
-
-    /**
-     * @return CashFlowEntity[]
-     */
-    abstract function getCashFlow();
 
 }

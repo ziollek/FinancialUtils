@@ -32,7 +32,7 @@ class NewtonRaphsonMethod {
                 break;
             }
 
-            if (abs(($nextArgument - $currentArgument) / $nextArgument)  < NewtonRaphsonMethod::PRECISE) {
+            if ($nextArgument == 0 || abs(($nextArgument - $currentArgument) / $nextArgument)  < NewtonRaphsonMethod::PRECISE) {
                 break;
             }
 
