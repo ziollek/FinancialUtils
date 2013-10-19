@@ -36,21 +36,21 @@ http://webapi-solutions.pl:8080/rrso/
 
 1. create composer.json
 
-    {
-        "require": {
-            "publib/FinancialUtils": "dev-master"
-        },
-        "autoload": {
-            "psr-0": {"": "src/"}
-        },
-        "repositories": [
-            {
-                "type": "git",
-                "url": "https://github.com/ziollek/FinancialUtils.git"
-            }
-        ],
-        "minimum-stability" : "dev"
-    }
+        {
+            "require": {
+                "publib/FinancialUtils": "dev-master"
+            },
+            "autoload": {
+                "psr-0": {"": "src/"}
+            },
+            "repositories": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/ziollek/FinancialUtils.git"
+                }
+            ],
+            "minimum-stability" : "dev"
+        }
 
 2. Install composer: php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
 3. Install dependencies: ./composer.phar install
