@@ -25,7 +25,8 @@ class APRTest extends \PHPUnit_Framework_TestCase
             array($this->getCredit(10, 0, 10.20, 100, 0, Calendar::FREQUENCY_MONTH), 4.43),
             array($this->getCredit(24, 0, 40.0, 400.0, 0, Calendar::FREQUENCY_MONTH), 169.96),
             array($this->getCredit(24, 0, 40.0, 400.0, 10, Calendar::FREQUENCY_MONTH), 179.53),
-            array($this->getCredit(30, 0, 55.0, 1000.0, 66, Calendar::FREQUENCY_MONTH), 62.89)
+            array($this->getCredit(30, 0, 55.0, 1000.0, 66, Calendar::FREQUENCY_MONTH), 62.89),
+            array($this->getCredit(24, 0, 274.11, 6000.0, 0, Calendar::FREQUENCY_MONTH), 9.38)
         );
     }
 

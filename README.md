@@ -4,9 +4,7 @@ FinancialUtils - some financial calculators i.e. APR (Annual Percentage Rate), I
 
 ## Computation example
 
-        $aprCalculator = new \Financial\Calculator\APR(
-            new \Financial\Util\Calendar(), new \Financial\Math\NewtonRaphsonMethod()
-        );
+        $aprCalculator = new \Financial\Calculator\APR(new \Financial\Math\NewtonRaphsonMethod());
 
         $credit = new \Financial\Model\CreditDefinitionEqualInstallments(new \Financial\Util\Calendar());
 
@@ -17,7 +15,7 @@ FinancialUtils - some financial calculators i.e. APR (Annual Percentage Rate), I
         $credit->setBorrowedAmount(400.0);
         $credit->setOtherCosts(14.0);
         //expected output: apr = 51.52 %
-        echo 'apr = ' . round($aprCalculator->compute($credit), 2).' %'.PHP_EOL;
+        echo 'apr = ' . round($aprCalculator->calculate($credit), 2).' %'.PHP_EOL;
 
 ## Online demo (PL)
 
